@@ -24,7 +24,7 @@ iOS中实现一个动画十分简单，在view层面上通过调用
 但是它不能控制动画的暂停和组合，所以就需要用到CoreAnimation了。
 iOS中的动画主要分为：基础动画（CABasicAnimation）、关键帧动画（CAKeyFrameAnimation）、动画组（CAAnimationGroup）、转场动画（CATransition），关系图如下
 
-![动画关系图](http://upload-images.jianshu.io/upload_images/1638754-321b6d8124c991dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![动画关系图](https://raw.githubusercontent.com/nuclearDev/nuclearDev.github.io/master/_image/Animation1.jpeg)
 
 * CAAnimation：核心动画的基础类，不能直接使用，负责动画运行时间、速度控制，本身是实现了CAMediaTiming协议
 * CAPropertyAnimation：属性动画的基类，即通过属性进行动画设置，不能直接使用。
@@ -91,11 +91,11 @@ fade.delegate = self;
 }
 ```
 
-![不更改透明度](http://upload-images.jianshu.io/upload_images/1638754-931ede35df410343.gif?imageMogr2/auto-orient/strip)
+![不更改透明度](https://raw.githubusercontent.com/nuclearDev/nuclearDev.github.io/master/_image/Animation2.gif)
 
 
 
-![更改了透明度](http://upload-images.jianshu.io/upload_images/1638754-fe9af10232a487db.gif?imageMogr2/auto-orient/strip)
+![更改了透明度](https://raw.githubusercontent.com/nuclearDev/nuclearDev.github.io/master/_image/Animation3.gif)
 
 
 >Tip: When creating an explicit animation, it is recommended that you always assign a value to the fromValue property of the animation object. If you do not specify a value for this property, Core animation uses the layer’s current value as the starting value. If you already updated the property to its final value, that might not yield the results you want.
@@ -148,7 +148,7 @@ fade.delegate = self;
 }
 ```
 
-![多个动画结合](http://upload-images.jianshu.io/upload_images/1638754-09eaf02c496d29be.gif?imageMogr2/auto-orient/strip)
+![多个动画结合](https://raw.githubusercontent.com/nuclearDev/nuclearDev.github.io/master/_image/Animation4.gif)
 
 ## 三、关键帧动画（CAKeyFramedAnimation）
 
@@ -186,7 +186,7 @@ CABasicAnimation只能设定初始和最终值，动画也只能是简单的从�
 }
 ```
 
-![keyFrameAnimation](http://upload-images.jianshu.io/upload_images/1638754-67a898672bc5a590.gif?imageMogr2/auto-orient/strip)
+![keyFrameAnimation](https://raw.githubusercontent.com/nuclearDev/nuclearDev.github.io/master/_image/Animation5.gif)
 
 ### 3.2 其他属性解析
 
@@ -210,7 +210,7 @@ kCAAnimationCubicPaced
 
 各个值的动画效果示意图：
 
-![calculationMode示意图](http://upload-images.jianshu.io/upload_images/1638754-b579730725d61be2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![calculationMode示意图](https://raw.githubusercontent.com/nuclearDev/nuclearDev.github.io/master/_image/Animation7.png)
 
 * keyTimes:
 > The keyTimes property specifies time markers at which to apply each keyframe value
@@ -234,7 +234,7 @@ CAKeyframeAnimation *keyFramedAnimation = [CAKeyframeAnimation animationWithKeyP
     [layer addAnimation:keyFramedAnimation forKey:@"KEYFRAME"];
 ```
 
-![keytime](http://upload-images.jianshu.io/upload_images/1638754-3151f30c49bcd62b.gif?imageMogr2/auto-orient/strip)
+![keytime](https://raw.githubusercontent.com/nuclearDev/nuclearDev.github.io/master/_image/Animation8.gif)
 
 ## 四、动画组
 
@@ -284,7 +284,7 @@ CABasicAnimation和CAKeyFramedAnimatio一次只能改变一个属性，显示开
 }
 ```
 
-![GROUP](http://upload-images.jianshu.io/upload_images/1638754-5749709e018243aa.gif?imageMogr2/auto-orient/strip)
+![GROUP](https://raw.githubusercontent.com/nuclearDev/nuclearDev.github.io/master/_image/Animation9.gif)
 
 官方文档给的示例代码：
 
@@ -315,11 +315,11 @@ group.duration = 5.0;
 转场动画会为layer的转换添加一个视觉效果，最常见的是一个layer的消失和另一个layer的出现。
 
 
-![4196_141022104125_1.jpg](http://upload-images.jianshu.io/upload_images/1638754-e0dbedc83859a81a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![CATransition](https://raw.githubusercontent.com/nuclearDev/nuclearDev.github.io/master/_image/Animation10.jpg)
 
 子类型：
 
-![4196_141022104212_1.jpg](http://upload-images.jianshu.io/upload_images/1638754-a35008479094edc9.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![CATransition](https://raw.githubusercontent.com/nuclearDev/nuclearDev.github.io/master/_image/Animation11.jpg)
 
 ```
 CATransition* transition = [CATransition animation];
@@ -394,7 +394,7 @@ Core Animation的 *马赫时间* ，可以使用`CACurrentMediaTime`来访问，
 ```
 
 得到的效果
-![pause](http://upload-images.jianshu.io/upload_images/1638754-753dd3a92d8c9602.gif?imageMogr2/auto-orient/strip)
+![pause](https://raw.githubusercontent.com/nuclearDev/nuclearDev.github.io/master/_image/Animation12.gif)
 
 
 
