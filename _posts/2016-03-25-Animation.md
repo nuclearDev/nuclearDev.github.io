@@ -40,8 +40,8 @@ iOS中的动画主要分为：基础动画（CABasicAnimation）、关键帧动�
 apple提供隐式动画和显式动画两种，隐式动画使用系统默认的时间和属性，如果要显式动画，需要用户自己配置属性。当用户想要用少量代码和默认的时间实现简单的动画，用隐式就行了。
 
 > **什么是隐式动画，显式动画？**
-> 
-* 隐式动画就是不需要手动调用动画方法，系统默认提供的动画效果，时间是1/4秒，root layer没有隐式动画。当你改变了layer的属性，apple会立刻把这个属性改变，但是会通过呈现树以动画的形式展示改变的效果（这也就是为什么apple建议通过presentationLayer的属性来访问当前屏幕上的layer信息了），这个动态改变的过程就是隐式动画。
+
+>* 隐式动画就是不需要手动调用动画方法，系统默认提供的动画效果，时间是1/4秒，root layer没有隐式动画。当你改变了layer的属性，apple会立刻把这个属性改变，但是会通过呈现树以动画的形式展示改变的效果（这也就是为什么apple建议通过presentationLayer的属性来访问当前屏幕上的layer信息了），这个动态改变的过程就是隐式动画。
 * 显式动画是开发者自定义的动画效果，可以设置属性改变的时间长度，改变的效果（淡入淡出等）。
 
 ### 2.1 单个动画
@@ -156,8 +156,7 @@ fade.delegate = self;
 
 CABasicAnimation只能设定初始和最终值，动画也只能是简单的从一个值到另一个值的变化。CAKeyFramedAnimation能够通过改变多个值，让你们的动画能够以线性或者非线性的方式展现。可以把keyFramedAnimation看成是许多个basicAnimation组合而成，每两个变化值之间的动画看成一个简单动画。
 
-以改变layer的position为例通过设置关键帧，做出曲线动画，它会根据设定的`path`值
-![Uploading keyframe_717706.gif . . .]（`path`是`CGPathRef`类型），通过描绘路径进行关键帧动画控制：
+以改变layer的position为例通过设置关键帧，做出曲线动画，它会根据设定的`path`值（`path`是`CGPathRef`类型），通过描绘路径进行关键帧动画控制：
 
 ```
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
@@ -191,6 +190,7 @@ CABasicAnimation只能设定初始和最终值，动画也只能是简单的从�
 ### 3.2 其他属性解析
 
 * calculationMode：
+
 >The calculationMode property defines the algorithm to use in calculating the animation timing. The value of this property affects how the other timing-related properties are used
 
 `calculationMode`，动画计算模式，规定了动画时间的算法，对与时间有关的动画属性起作用。它是一个字符串类型，有如下：
