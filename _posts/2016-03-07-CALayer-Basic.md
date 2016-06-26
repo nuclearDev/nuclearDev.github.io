@@ -23,7 +23,7 @@ comments: true
 
 > CALayer和UIView有些相似，是一些被层级关系树管理着的矩形块，同时也可以添加subLayer，唯一的区别是**CALayer不处理交互事件**。
 
-![CALayer的层级，与UIView相似](http://upload-images.jianshu.io/upload_images/1638754-022142af88f97f5c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![CALayer的层级，与UIView相似](https://raw.githubusercontent.com/nuclearDev/nuclearDev.github.io/master/_image/CALayer_Basic1.png)
 
 ### 2.1CALayer tree
 
@@ -50,7 +50,7 @@ Core Animation 使用三种类型的layer tree对象来实现动画：
 
 当改变layer的值的时候，layer-tree的值会马上改变，通过render-tree渲染，presentation-tree以动画的形式展现layer的某个属性值的渐变过程。
 
-![layer trees之间的通信](http://upload-images.jianshu.io/upload_images/1638754-1a62da86e2fe5a31.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![layer trees之间的通信](https://raw.githubusercontent.com/nuclearDev/nuclearDev.github.io/master/_image/CALayer_Basic2.png)
 
 
 
@@ -60,7 +60,7 @@ Core Animation 使用三种类型的layer tree对象来实现动画：
 
 ### 2.2CALayer的属性
 
-![属性表](http://upload-images.jianshu.io/upload_images/1638754-6cca7611f90817ff.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![属性表](https://raw.githubusercontent.com/nuclearDev/nuclearDev.github.io/master/_image/CALayer_Basic3.jpg)
 
 * layer中动画很少使用frame，用的是bounds和position
 * 设置透明度不是alpha，而是opacity
@@ -115,7 +115,7 @@ int i = 1;
 }
 ```
 
-![图形移动方向与锚点改变方向](http://upload-images.jianshu.io/upload_images/1638754-c6b120f4cda2188b.gif?imageMogr2/auto-orient/strip)
+![图形移动方向与锚点改变方向](https://raw.githubusercontent.com/nuclearDev/nuclearDev.github.io/master/_image/CALayer_Basic4.gif)
 
 其他几个属性的改变演示：
 
@@ -147,7 +147,7 @@ int i = 1;
 }
 ```
 
-![layer的几个属性改变](http://upload-images.jianshu.io/upload_images/1638754-6f2e226882d00401.gif?imageMogr2/auto-orient/strip)
+![layer的几个属性改变](https://raw.githubusercontent.com/nuclearDev/nuclearDev.github.io/master/_image/CALayer_Basic5.gif)
 
 ###2.3 layer与view的关系
 
@@ -196,13 +196,13 @@ layer不会响应事件，也不会参与事件的传递，因此view是必不�
 ```
 
 
-![hitest](http://upload-images.jianshu.io/upload_images/1638754-97c0884a0ff21d55.gif?imageMogr2/auto-orient/strip)
+![hitest](https://raw.githubusercontent.com/nuclearDev/nuclearDev.github.io/master/_image/CALayer_Basic6.gif)
 
 ## 三、基于CALayer的绘图模型
 
 layer在app中不具有实际的绘图能力，它只是获取了app的页面并将它缓存到一个被称作 *后备缓存器* 的bitmap中。用户改变了layer的属性时只是改变了layer的状态信息，当与动画结合时，`Core Animation`将layer的bitmap传递给graphics hardware，graphics hardware会将新的变化以动画的形式表现出来，
 
-![动画示例](http://upload-images.jianshu.io/upload_images/1638754-360e8926d7055646.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![动画示例](https://raw.githubusercontent.com/nuclearDev/nuclearDev.github.io/master/_image/CALayer_Basic7.png)
 
 在view层会调用drawRect：方法从新绘制新的视图，但是这个方法是用CPU在主线程重新绘制了视图，会导致内存消耗过大。`Core Animation`通过在任何可以的情况下调度bitmap的缓存来达到同样或者相似的效果。
 
@@ -246,7 +246,7 @@ layer只是管理bitmap图片的一个容器，所有可以直接把image（必�
 
 	得到的效果
 
-	![CGImage](http://upload-images.jianshu.io/upload_images/1638754-88bfe28d063ef76d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+	![CGImage](https://raw.githubusercontent.com/nuclearDev/nuclearDev.github.io/master/_image/CALayer_Basic8.jpeg)
 
  **contentGravity**
  
@@ -279,7 +279,7 @@ layer.contentsScale = [UIScreen mainScreen].bounds;
   
   contentRect允许开发者在图层的边框里显示图片的一个子区域，它使用了单位坐标来计算，默认的值为（0，0，1，1），如果知道一个小一点的矩形，图片就会被裁剪。
 
-![contentsRect](http://upload-images.jianshu.io/upload_images/1638754-8961378d16f2cb82.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![contentsRect](https://raw.githubusercontent.com/nuclearDev/nuclearDev.github.io/master/_image/CALayer_Basic9.jpg)
 
 利用这一点可以用来做图片拼合。先将需要拼合的图片打包整合到一张大图上一次性载入，相比多次载入不同的图片，可以优化内存使用，缩短载入时间等。
 
@@ -317,7 +317,7 @@ layer.contentsScale = [UIScreen mainScreen].bounds;
 ```
 
 
-![利用contentsRect展示一张图片的不同区域](http://upload-images.jianshu.io/upload_images/1638754-538230b7e504d7a1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![利用contentsRect展示一张图片的不同区域](https://raw.githubusercontent.com/nuclearDev/nuclearDev.github.io/master/_image/CALayer_Basic10.jpeg)
 
   **contentsCenter**
   
@@ -335,7 +335,7 @@ layer.contentsScale = [UIScreen mainScreen].bounds;
 ```
 
 
-![contensCenter效果](http://upload-images.jianshu.io/upload_images/1638754-b7f64e535ff50874.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![contensCenter效果](https://raw.githubusercontent.com/nuclearDev/nuclearDev.github.io/master/_image/CALayer_Basic11.jpeg)
 
 * ##### 通过layer的代理赋值image
 
