@@ -30,11 +30,13 @@ comments: true
 Core Animation 使用三种类型的layer tree对象来实现动画：
 
 * model layer tree（模型层树）
+
 	>Objects in the model layer tree (or simply “layer tree”) are the ones your app interacts with the most. The objects in this tree are the model objects that store the target values for any animations. Whenever you change the property of a layer, you use one of these objects.
 
  	模型层树是于app管理最密切的，这个层树里面的model对象存储了所有与动画有关所有值信息，改变layer的值的时候就是改变这些对象的值。
  	
 * presentation tree（表示层树）
+
 	>Objects in the presentation tree contain the in-flight values for any running animations. Whereas the layer tree objects contain the target values for an animation, the objects in the presentation tree reflect the current values as they appear onscreen. You should never modify the objects in this tree. Instead, you use these objects to read current animation values, perhaps to create a new animation starting at those values.
 
 	表示层树的对象包含了任何正在进行的动画的值，是当前值在屏幕上的映射。在使用动画时，最好不要更改这些对象，而是使用这些对象读取当前动画相关值，在这些值的基础上创建一个新的动画。
@@ -78,13 +80,11 @@ layer的几何操作都与锚点有关，当操作position和transform属性的�
 
 ```
 int i = 1;
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     NSLog(@"bbb");
-
     UIView *v = self.subviews[0];
     v.layer.cornerRadius = 4;
     v.layer.masksToBounds = YES;
-
     CGPoint p;
     switch (i) {
         case 1:
@@ -99,19 +99,18 @@ int i = 1;
         default:
             break;
     }
-
     i++;
     if (i > 3) {
         i = 1;
     }
-    
     self.layer.anchorPoint = p;
     [UIView animateWithDuration:0.3 animations:^{
         //红色view的宽高分别为100，50
         v.center = CGPointMake(p.x * 100, p.x * 50);
     }];
+    
     NSLog(@"%@",NSStringFromCGPoint(p));
-    NSLog(@"%@",NSStringFromCGPoint(self.layer.position));
+	NSLog(@"%@",NSStringFromCGPoint(self.layer.position));
 }
 ```
 
@@ -120,13 +119,11 @@ int i = 1;
 其他几个属性的改变演示：
 
 ```
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     UITouch *touch = [touches anyObject];
     CGPoint p = [touch locationInView:self];
-    
     CGFloat raidus = 25;
     CGSize size = CGSizeMake(2*raidus, 2*raidus);
-    
     CALayer *layer = [[CALayer alloc] init];
     //中心点位置
     layer.position = p;
@@ -149,13 +146,13 @@ int i = 1;
 
 ![layer的几个属性改变](https://raw.githubusercontent.com/nuclearDev/nuclearDev.github.io/master/_image/CALayer_Basic5.gif)
 
-###2.3 layer与view的关系
+### 2.3 layer与view的关系
 
 虽然可以在layer上不断添加子layer，但是layer不能取代view，layer只是让动画和绘制view的内容更高效。
 
 >Layers do not handle events, draw content, participate in the responder chain, or do many other things.
 
-layer不会响应事件，也不会参与事件的传递，因此view是必不可少的，否则就不能响应各类的事件了（）。
+layer不会响应事件，也不会参与事件的传递，因此view是必不可少的，否则就不能响应各类的事件了。
 
 **NOTE：可以通过`hitTest：`方法判断是否点击了layer**
 
@@ -181,7 +178,7 @@ layer不会响应事件，也不会参与事件的传递，因此view是必不�
     self.layer = layer;
 }
 
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     CGPoint p = [[touches anyObject] locationInView:self.view];
     if ([self.layer.presentationLayer hitTest:p]) {
         self.layer.backgroundColor = [UIColor colorWithRed:arc4random()/INT_MAX green:arc4random()/INT_MAX blue:arc4random()/INT_MAX alpha:1].CGColor;
@@ -251,8 +248,9 @@ layer只是管理bitmap图片的一个容器，所有可以直接把image（必�
  **contentGravity**
  
   可以看出本来圆形的icon被拉长了，UIImageView显示图片的时候也遇到过这种情况，解决方法是设置合适的contentMode值。layer中控制这中属性的叫contentsGravity，它是一个NSString类型:
-  
->kCAGravityCenter
+
+```  
+kCAGravityCenter
 kCAGravityTop
 kCAGravityBottom
 kCAGravityLeft
@@ -264,6 +262,7 @@ kCAGravityBottomRight
 kCAGravityResize
 kCAGravityResizeAspect
 kCAGravityResizeAspectFill
+```
 
   **contentsScale**
   
@@ -350,9 +349,9 @@ layer.contentsScale = [UIScreen mainScreen].bounds;
 
 **NOTE:两个代理方法调用一个即可，如果两个方法都实现了，系统只会调用displayLayer：方法。**
 
-  apple官方文档给的实例代码如下：
+apple官方文档给的实例代码如下：
 
-  ```
+```
  - (void)displayLayer:(CALayer *)theLayer {
     // Check the value of some state property
     if (self.displayYesImage) {
