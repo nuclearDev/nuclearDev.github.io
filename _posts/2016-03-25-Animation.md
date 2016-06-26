@@ -2,7 +2,7 @@
 layout: post
 title:  "Animation"
 date:   2016-03-25
-excerpt: "CALayer 基础知识"
+excerpt: "CALayer 动画实践"
 tag:
 - iOS 
 - CALayer 
