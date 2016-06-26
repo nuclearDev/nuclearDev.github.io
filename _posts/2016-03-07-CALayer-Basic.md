@@ -233,13 +233,13 @@ layer只是管理bitmap图片的一个容器，所有可以直接把image（必�
 
 	示例代码如下：
 	
-	```
-	-(void)viewDidLoad {
-	    [super viewDidLoad];
-	    UIImage *img = [UIImage imageNamed:@"icon1"];
-	    self.view.layer.contents = (__bridge id)(img.CGImage);
-	}
-	```
+```
+-(void)viewDidLoad {
+    [super viewDidLoad];
+    UIImage *img = [UIImage imageNamed:@"icon1"];
+    self.view.layer.contents = (__bridge id)(img.CGImage);
+}
+```
 
 	得到的效果
 
