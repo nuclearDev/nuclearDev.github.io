@@ -1,3 +1,16 @@
+---
+layout: post
+title:  "Animation"
+date:   2016-03-25
+excerpt: "CALayer 基础知识"
+tag:
+- iOS 
+- CALayer 
+- 动画 
+- CoreAnimation 
+comments: true
+---
+
 ## 一、iOS动画
 
 iOS中实现一个动画十分简单，在view层面上通过调用
