@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Method Swizzling"
+title:  "黑魔法 - Method Swizzling"
 date:   2016-05-04
 excerpt: "method swizzling可以在不知道一个类的源码以及实现原理的情况下，不需要通过继承或者重写来改变这个类的功能，被誉为黑魔法"
 tag:
@@ -129,5 +129,7 @@ god method_exchangeImplementation(originalMethod,swappedMethod);
 ## 参考
 
 [Objective-C Runtime 运行时之四：Method Swizzling](http://southpeak.github.io/blog/2014/11/06/objective-c-runtime-yun-xing-shi-zhi-si-:method-swizzling/)
+
 [Method Swizzling](http://nshipster.com/method-swizzling/)
+
 [stackoverflow: What's the difference between a method and a selector?](http://stackoverflow.com/questions/5608476/whats-the-difference-between-a-method-and-a-selector)
